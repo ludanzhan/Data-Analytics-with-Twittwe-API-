@@ -2,8 +2,6 @@
 # coding: utf-8
 
 # In[1]:
-
-
 import requests
 import json 
 from bearer_file import bearer_token
