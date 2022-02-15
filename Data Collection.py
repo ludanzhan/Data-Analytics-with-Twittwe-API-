@@ -33,9 +33,12 @@ def get_tweets():
             )
         )
     Id_list = []
+    person_id_list = []
     for response in json_response['data']:
         account_id = response['id']
         Id_list.append(account_id)
+        person_dict = {response['username']: response['id']}
+        person_id_list.append(person_dict)
     
     url_list = []
     for account in Id_list:
@@ -46,7 +49,7 @@ def get_tweets():
     response_list = []
     for url in url_list:
         url = url
-        params = {"tweet.fields": "public_metrics", "max_results": 100}
+        params = {"tweet.fields": "public_metrics", "expansions": "author_id", "user.fields":"description", "max_results": 100}
     
     
     
@@ -61,7 +64,9 @@ def get_tweets():
         tweets = response.json()
         response_list.append(tweets)
         
-    return response_list
+    return person_id_list, response_list
+        
+    
         
     
 
