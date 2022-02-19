@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body style="background-color:steelblue">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.js" integrity="sha512-GgeYbSbIufsTDQLCp/zhWN2AJRddt3w9p942+lOS5emAtvRBGo65t2zq8Svq+CIZIo1V1DgA6kHzQTBCH0HiXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <div id="fullpage">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js" integrity="sha512-gSf3NCgs6wWEdztl1e6vUqtRP884ONnCNzCpomdoQ0xXsk06lrxJsR7jX5yM/qAGkPGsps+4bLV5IEjhOZX+gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <div id="fullPage">
     <div class="section">
       <div class="container">
         <div class="row">
@@ -47,18 +47,30 @@
       </div>
     </div>
     <!-- Other pages -->
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
+    <div class="section" style = "background-color: white;">
+      <h1>Some section</h1>
+        <div class="slide"> Slide 1 </div>
+        <div class="slide"> Slide 2 </div>
+        <div class="slide"> Slide 3 </div>
+        <div class="slide"> Slide 4 </div>
+    </div>
+    <div class="section">
+      <h1>Some section</h1>
+    </div>
+    <div class="section" style = "background-color: white;">
+      <h1>Some section</h1>
+    </div>
   </div>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="templates/static/app.js"></script>
   <script>
-    new fullpage('#fullpage', {
+    new fullpage('#fullPage', {
         //options here
         autoScrolling:true,
-        scrollHorizontally: true
+        navigation: true,
+        controlArrows: false,
+        slidesNavigation: true
     });
   </script>
 </body>
