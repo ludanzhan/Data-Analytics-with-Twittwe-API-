@@ -26,6 +26,5 @@ d3.json("../tweet.json").then(function(tweetdata){
         for(let i =0; i< keys.length; i++){
             sample_metadata.append("p").text(keys[i] + ": " + values[i]);
         }  
-
     }
 });
