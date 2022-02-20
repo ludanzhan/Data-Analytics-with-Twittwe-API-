@@ -44,7 +44,6 @@ d3.json("../tweet.json").then(function(tweetdata){
         sample_metadata.append("li").text("Average Quote Count: " + quoteCount/100);
         sample_metadata.append("li").text("Average Reply Count: " + replyCount/100);
         sample_metadata.append("li").text("Average Retweet Count: " + retweetCount/100);
-
     }
 
     d3.selectAll("#selDataset").on("change", updateData);
