@@ -65,20 +65,13 @@ def get_tweets():
         response_list.append(tweets)
         
     return person_id_list, response_list
-        
-    
-        
-    
 
+def get_json():
+    tweet_data = get_tweets()
+    with open("tweet.json", "w") as write_file:
+    json.dump(tweet_data, write_file)
 
-# In[2]:
-
-
-get_tweets()
-
-
-# In[ ]:
-
+get_json()
 
 
 
