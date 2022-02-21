@@ -15,7 +15,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 jumbotron text-center" style="background-color:steelblue">
-            <h1>Twitter API Dashboard</h1>
+            <h1 style="font-size: 90px;">Twitter API Dashboard</h1>
           </div>
         </div>
       </div>
@@ -25,16 +25,13 @@
         <div class="slide"> 
           <div class="container">
             <div class="row">
-              <div class="col-md-12">
-                <div class="well" >
+              <div class="col-md-4">
+                <div class="well" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 20px; background-color:#dca6a6; border-style: solid; border-radius: 20px; border-width:medium; border-color: black;">
                   <h2 >Twitter User Name:</h2>
-                  <select id="selDataset" onchange="optionChanged(this.value)" style="font-size: 20px;"></select>
+                  <select id="selDataset" onchange="optionChanged(this.value)" style="font-size: 17px;"></select>
                 </div>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h2 class="panel-title">Basic Info</h2>
-                  </div>
-                  <div id="sample-metadata" class="panel-body" style="font-size: 20px; "></div>
+                <div class="panel panel-primary" style="font-family:Georgia, 'Times New Roman', Times, serif;font-size: 20px; background-color:#dca6a6; border-style: solid; border-radius: 20px; border-width:medium; border-color: black;">
+                  <div id="sample-metadata" class="panel-body" ></div>
                 </div>
               </div>
             </div>
@@ -51,10 +48,12 @@
       <h1>Some section</h1>
     </div>
   </div>
+
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="static/app.js"></script> 
   <script src="../tweet.json"></script>
+
   <script>
     new fullpage('#fullPage', {
         //options here
@@ -64,6 +63,7 @@
         slidesNavigation: true
     });
   </script>
+
 </body>
 </html>
 

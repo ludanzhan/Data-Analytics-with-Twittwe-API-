@@ -15,6 +15,8 @@ d3.json("../tweet.json").then(function(tweetdata){
 
     function updateinfo(id){
         let info = data[1][id].data
+
+        // extract info for each user
         let likeCount = 0
         for(let i = 0 ; i < info.length; i++){
             likeCount = likeCount + info[i].public_metrics.like_count
@@ -36,7 +38,24 @@ d3.json("../tweet.json").then(function(tweetdata){
         }
     
         console.log(info[1])
-    
+
+        //create barchart
+        let barTrace = {
+            x: ["Average Like Count","Average Quote Count","Average Reply Count","Average Retweet Count"],
+            y: [likeCount, quoteCount, replyCount, retweetCount],
+            type: 'bar'
+        }
+
+        let layout = {
+            width: 350,
+            height: 550
+        };
+
+        let traceData = [barTrace];
+        Plotly.newPlot("bar", traceData, layout);
+        
+
+        // update info panel
         let sample_metadata = d3.select("#sample-metadata");
     
         sample_metadata.html("");
