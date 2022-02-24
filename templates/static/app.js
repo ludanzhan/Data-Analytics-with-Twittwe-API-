@@ -47,7 +47,7 @@ d3.json("../tweet.json").then(function(tweetdata){
         }
 
         let layout = {
-            width: 350,
+            width: 550,
             height: 550
         };
 
