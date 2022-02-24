@@ -468,3 +468,17 @@ d3.json("../tweet.json").then(function(tweetdata){
         }
     }
 });
+
+d3.json("../tweet.json").then(function(data){
+    const tweetData=data;
+    let elonmusk=tweetData[1][0];
+    let elonmuskPublicmetrics=elonmusk.public_metrics;
+    console.log(elonmusk);
+
+    
+    let likeCounts=[];
+    for(let i =0; i< 100; i++){
+        likeCounts.push(elonmusk.data[i].public_metrics.like_count);
+    }
+console.log(likeCounts)
+});
