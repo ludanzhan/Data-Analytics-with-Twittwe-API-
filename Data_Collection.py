@@ -6,7 +6,7 @@
 
 import requests
 import json 
-from bearer_file import bearer_token
+#from bearer_file import bearer_token
 import pymongo
 
 client = pymongo.MongoClient('mongodb://localhost:27017')
@@ -18,7 +18,7 @@ def bearer_oauth(r):
     Method required by bearer token authentication.
     """
 
-    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["Authorization"] = f"Bearer AAAAAAAAAAAAAAAAAAAAACupZAEAAAAAgYUPv3%2FKhNopeBSQO47R5SexlS4%3DsKOro4aO0JMCmxOjDu9P2NJFwUgrluEwtkwIreD964xrWQPUha"
     r.headers["User-Agent"] = "v2UserTweetsPython"
     return r
 
@@ -74,6 +74,6 @@ def get_tweets():
         "tweets":response_list
     }
 
-    collection.insert(twitter_data)
+    collection.insert_one(twitter_data)
 
 get_tweets()
