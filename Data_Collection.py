@@ -74,6 +74,6 @@ def get_tweets():
         "tweets":response_list
     }
 
-    collection.insert(twitter_data)
+    collection.insert_one(twitter_data)
 
 get_tweets()
