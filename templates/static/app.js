@@ -313,7 +313,7 @@ d3.json("../tweet.json").then(function(tweetdata){
         showlegend: true,
         xaxis: {title:'Twitter user name'},
         yaxis: {title:'Average Quote Count'},
-        height: 850,
+        height: 800,
         width: 1400
     };
 
@@ -541,22 +541,7 @@ d3.json("../tweet.json").then(function(tweetdata){
         selectBox2.append("option").text(Object.keys(values[i]));
         //console.log(Object.keys(values[i]));
 };
-// let elone = data[1][0].data;
-// let likecountsArray=[];
 
-// for(let j = 0 ; ij< 10; j++){
-
-//    likecountsArray.push (data[1][j].data);
-//    let likeCounts=[];
-//    for(let i = 0 ; i <100; i++){
-//              likeCounts.push([i].public_metrics.like_count) 
-//          };
-//    console.log(likeCounts);
-
-
-
-
-// };
 let obamaInfo = data[1][1].data;
 
     console.log(obamaInfo);
@@ -592,45 +577,7 @@ let obamaInfo = data[1][1].data;
     console.log(E);
     console.log(F);
 
-// let selectedID=names.filter(namesObj => namesObj.key == selectedSample);
-// let selectedData=tweets.filter(tweetsObj=>tweetsObj.)
-//     console.log(data[1]);
-
-//  //default chart
-//     pieChart(0)
-//  //<!---------------------Collecting count information -------------------------------------->
-//   // collect elon mask info
-
-//   function pieChart(selectedSample){
-
-//       let likeCount=[];
-
-//       let selectedInfo = data[1][0].data;
-//   let elonLike = 0
-//   for(let i = 0 ; i < elonInfo.length; i++){
-//       elonLike = elonLike + elonInfo[i].public_metrics.like_count
-//   }
-
-//   let elonQuote = 0
-//   for(let i = 0 ; i < elonInfo.length; i++){
-//       elonQuote =  elonQuote + elonInfo[i].public_metrics.quote_count
-//   }
-
-//   let elonReply = 0
-//   for(let i = 0 ; i < elonInfo.length; i++){
-//       elonReply =  elonReply+ elonInfo[i].public_metrics.reply_count
-//   }
-
-//   let elonRetweet = 0
-//   for(let i = 0 ; i < elonInfo.length; i++){
-//       elonRetweet =  elonRetweet + elonInfo[i].public_metrics.retweet_count
-//   }
-
-//   // creating pie chart
-
       
-
-
   var pieData = [{
       values: [A,B,C,D,E,F],
       labels: ['>5k', '>10K', '>20K','>40K','>80k','>160K'],
@@ -638,29 +585,28 @@ let obamaInfo = data[1][1].data;
     }];
     
     var pieLayout = {
-      height: 850,
+      height: 750,
       width: 1200
     };
     
     Plotly.newPlot('pie', pieData, pieLayout);
 
 
-
-
-
-
-//   }
-
-
-
-
-
-// });
-
 })
-    
 
-    //   function optionChanged(selectedSample){
-    //       pieChart(selectedSample);
-    //   }
-    
+// let elone = data[1][0].data;
+// let likecountsArray=[];
+
+// for(let j = 0 ; ij< 10; j++){
+
+//    likecountsArray.push (data[1][j].data);
+//    let likeCounts=[];
+//    for(let i = 0 ; i <100; i++){
+//              likeCounts.push([i].public_metrics.like_count) 
+//          };
+//    console.log(likeCounts);
+
+
+
+
+// };
