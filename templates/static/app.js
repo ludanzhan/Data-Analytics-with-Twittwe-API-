@@ -2,6 +2,8 @@ d3.json("../tweet.json").then(function(tweetdata){
     const data = tweetdata;
     let names = data[0];
     let values = Object.values(names)
+
+    console.log(names);
     // grab the dropdown menu
     const selectBox = d3.select("#selDataset");
         
