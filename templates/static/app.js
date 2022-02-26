@@ -254,7 +254,7 @@ d3.json("../tweet.json").then(function(tweetdata){
             showlegend: true,
             xaxis: {title:'Like Counts'},
            
-            height: 850,
+            height: 700,
             width: 1200
         };
           var scatterTrace2 = {
