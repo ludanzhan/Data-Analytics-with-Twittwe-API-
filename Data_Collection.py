@@ -7,6 +7,11 @@
 import requests
 import json 
 from bearer_file import bearer_token
+import pymongo
+
+client = pymongo.MongoClient('mongodb://localhost:27017')
+db = client.twitter_db
+collection = db.tweets 
 
 def bearer_oauth(r):
     """
@@ -63,15 +68,12 @@ def get_tweets():
             )
         tweets = response.json()
         response_list.append(tweets)
-        
-    return person_id_list, response_list
 
-def get_json():
-    tweet_data = get_tweets()
-    with open("tweet.json", "w") as write_file:
-    json.dump(tweet_data, write_file)
+    twitter_data = {
+        "users": person_id_list,
+        "tweets":response_list
+    }
 
-get_json()
+    collection.insert(twitter_data)
 
-
-
+get_tweets()
