@@ -253,7 +253,7 @@ d3.json("../tweet.json").then(function(tweetdata){
         let scatterLayout = {    
             showlegend: true,
             xaxis: {title:'Like Counts'},
-           
+
             height: 700,
             width: 1200
         };
@@ -295,8 +295,6 @@ d3.json("../tweet.json").then(function(tweetdata){
           
           Plotly.newPlot('scatter', scatterData, scatterLayout,{displaylogo: false});
         
-
-   
      // create bubble chart
      let bubbleTrace = {
         x : [ "Barack Obama", "Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
