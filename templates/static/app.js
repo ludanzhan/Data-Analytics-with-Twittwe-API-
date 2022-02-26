@@ -235,6 +235,67 @@ d3.json("../tweet.json").then(function(tweetdata){
     }
 
     //<!---------------------Create Chart ----------------------------------------------->
+
+     //create scatter plot
+        var scatterTrace1 = {
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
+            y: [  obamaRetweet/100, wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
+            mode: 'markers+text',
+            marker: {
+                size: 20
+              },
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            textposition: 'top center',
+            name: 'Retweet Counts',
+            type: 'scatter'
+          };
+          
+        let scatterLayout = {    
+            showlegend: true,
+            xaxis: {title:'Like Counts'},
+           
+            height: 850,
+            width: 1200
+        };
+          var scatterTrace2 = {
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
+            y: [  obamaQuote/100, wendyQuote/100, shroudQuote/100, CDawgVAQuote/100, charliQuote/100, nflQuote/100, instagramQuote/100],
+            marker: {
+                size: 20
+              },
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            textposition: 'top center',
+            name: 'Quote Counts',
+            
+            mode: 'markers+text',           
+            type: 'scatter'
+          };
+        
+
+          var scatterTrace3 = {
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
+            y: [  obamaReply/100, wendyReply/100, shroudReply/100, CDawgVAReply/100, charliReply/100, nflReply/100, instagramReply/100],
+            marker: {
+                size: 20
+              },
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            textposition: 'top center',
+            name: 'Reply Counts',
+            mode: 'markers+text',           
+            type: 'scatter'
+          };
+        //   var trace3 = {
+        //     x: [1, 2, 3, 4],
+        //     y: [12, 9, 15, 12],
+        //     mode: 'lines+markers',
+        //     type: 'scatter'
+        //   };
+          
+        var scatterData = [scatterTrace1, scatterTrace2,scatterTrace3];
+          
+          Plotly.newPlot('scatter', scatterData, scatterLayout,{displaylogo: false});
+        
+
    
      // create bubble chart
      let bubbleTrace = {
@@ -440,7 +501,6 @@ d3.json("../tweet.json").then(function(tweetdata){
 
         let traceData = [barTrace];
         Plotly.newPlot("bar", traceData, layout);
-        
 
         // update info panel
         let sample_metadata = d3.select("#sample-metadata");
@@ -469,16 +529,140 @@ d3.json("../tweet.json").then(function(tweetdata){
     }
 });
 
-d3.json("../tweet.json").then(function(data){
-    const tweetData=data;
-    let elonmusk=tweetData[1][0];
-    let elonmuskPublicmetrics=elonmusk.public_metrics;
-    console.log(elonmusk);
+d3.json("../tweet.json").then(function(tweetdata){
+    const data = tweetdata;
+    let names = data[0];
+    let tweets=data[1];
+    console.log(tweets);
+    let values = Object.values(names);
+    // grab the dropdown menu
+    const selectBox2 = d3.select("#selDataset2");
+        
+    // adding ids to the dropdown menu
+    for(let i =0; i< names.length; i++){
+        selectBox2.append("option").text(Object.keys(values[i]));
+        //console.log(Object.keys(values[i]));
+};
+// let elone = data[1][0].data;
+// let likecountsArray=[];
 
-    
+// for(let j = 0 ; ij< 10; j++){
+
+//    likecountsArray.push (data[1][j].data);
+//    let likeCounts=[];
+//    for(let i = 0 ; i <100; i++){
+//              likeCounts.push([i].public_metrics.like_count) 
+//          };
+//    console.log(likeCounts);
+
+
+
+
+// };
+let obamaInfo = data[1][1].data;
+
+    console.log(obamaInfo);
     let likeCounts=[];
-    for(let i =0; i< 100; i++){
-        likeCounts.push(elonmusk.data[i].public_metrics.like_count);
-    }
-console.log(likeCounts)
-});
+    for(let i = 0 ; i < obamaInfo.length; i++){
+              likeCounts.push(obamaInfo[i].public_metrics.like_count) 
+          };
+    console.log(likeCounts);
+
+    let A=[];
+    let B=[];
+    let C=[];
+    let D=[];
+    let E=[];
+    let F=[];
+
+
+    for(let i = 0 ; i < likeCounts.length; i++){
+
+        let counts=likeCounts[i];
+        if (counts>5000){A++};
+        if (counts>10000){B++};
+        if (counts>20000){C++};
+        if (counts>40000){D++};
+        if (counts>80000){E++};
+        if (counts>160000){F++}
+    };
+
+    console.log(A);
+    console.log(B);
+    console.log(C);
+    console.log(D);
+    console.log(E);
+    console.log(F);
+
+// let selectedID=names.filter(namesObj => namesObj.key == selectedSample);
+// let selectedData=tweets.filter(tweetsObj=>tweetsObj.)
+//     console.log(data[1]);
+
+//  //default chart
+//     pieChart(0)
+//  //<!---------------------Collecting count information -------------------------------------->
+//   // collect elon mask info
+
+//   function pieChart(selectedSample){
+
+//       let likeCount=[];
+
+//       let selectedInfo = data[1][0].data;
+//   let elonLike = 0
+//   for(let i = 0 ; i < elonInfo.length; i++){
+//       elonLike = elonLike + elonInfo[i].public_metrics.like_count
+//   }
+
+//   let elonQuote = 0
+//   for(let i = 0 ; i < elonInfo.length; i++){
+//       elonQuote =  elonQuote + elonInfo[i].public_metrics.quote_count
+//   }
+
+//   let elonReply = 0
+//   for(let i = 0 ; i < elonInfo.length; i++){
+//       elonReply =  elonReply+ elonInfo[i].public_metrics.reply_count
+//   }
+
+//   let elonRetweet = 0
+//   for(let i = 0 ; i < elonInfo.length; i++){
+//       elonRetweet =  elonRetweet + elonInfo[i].public_metrics.retweet_count
+//   }
+
+//   // creating pie chart
+
+      
+
+
+  var pieData = [{
+      values: [A,B,C,D,E,F],
+      labels: ['>5k', '>10K', '>20K','>40K','>80k','>160K'],
+      type: 'pie'
+    }];
+    
+    var pieLayout = {
+      height: 850,
+      width: 1200
+    };
+    
+    Plotly.newPlot('pie', pieData, pieLayout);
+
+
+
+
+
+
+//   }
+
+
+
+
+
+// });
+
+})
+    
+
+    //   function optionChanged(selectedSample){
+    //       pieChart(selectedSample);
+    //   }
+    

@@ -7,6 +7,7 @@
   <title>Twitter API</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css" integrity="sha512-TD/aL30dNLN0VaHVoh9voFlNi7ZuWQYtV4bkIJv2ulZ8mEEkZJ7IyGvDthMKvIUwzLmPONnjQlAi55HTERVXpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body style="background-color:steelblue">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js" integrity="sha512-gSf3NCgs6wWEdztl1e6vUqtRP884ONnCNzCpomdoQ0xXsk06lrxJsR7jX5yM/qAGkPGsps+4bLV5IEjhOZX+gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -102,6 +103,37 @@
       </div>
     </div>
   </div>
+  <div class="section" style = "background-color: white;">
+    <div class="slide"> 
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+              <div id="scatter"></div>
+            </div>
+         </div>
+      </div>
+    </div>
+</div>
+<div class="section" style = "background-color: white;">
+  <div class="slide"> 
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+            <div class="well" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 15px; background-color:#dca6a6; border-style: solid; border-radius: 20px; border-width:medium; border-color: black;">
+              <h2 >Twitter User Name:</h2>
+              <select id="selDataset2" onchange="optionChanged(this.value)" style="font-size: 17px;"></select>
+            </div>
+            <div class="panel panel-primary" style="font-family:Georgia, 'Times New Roman', Times, serif;font-size: 20px; background-color:#dca6a6; border-style: solid; border-radius: 20px; border-width:medium; border-color: black;">
+              <div id="sample-metadata" class="panel-body" ></div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div id="pie"></div>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
