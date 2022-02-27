@@ -1,9 +1,9 @@
-d3.json("tweet_1.json").then(function(tweetdata){
+d3.json("tweet.json").then(function(tweetdata){
     const data = tweetdata;
-    let names = data[0];
+    let names = data[1].users;
     let values = Object.values(names)
 
-    console.log(names);
+    console.log(data[1].tweets[0].data)
     // grab the dropdown menu
     const selectBox = d3.select("#selDataset");
         
@@ -17,7 +17,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     updateinfo(0)
    //<!---------------------Collecting count information -------------------------------------->
     // collect elon mask info
-    let elonInfo = data[1][0].data;
+    let elonInfo = data[1].tweets[0].data;
     let elonLike = 0
     for(let i = 0 ; i < elonInfo.length; i++){
         elonLike = elonLike + elonInfo[i].public_metrics.like_count
@@ -39,7 +39,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
     
     // collect obama info
-    let obamaInfo = data[1][1].data;
+    let obamaInfo = data[1].tweets[1].data;
     let obamaLike = 0
     for(let i = 0 ; i < obamaInfo.length; i++){
         obamaLike = obamaLike + obamaInfo[i].public_metrics.like_count
@@ -61,7 +61,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
    // collect cristiano info
-    let cristianoInfo = data[1][2].data;
+    let cristianoInfo = data[1].tweets[2].data;
     let cristianoLike = 0
     for(let i = 0 ; i < cristianoInfo.length; i++){
         cristianoLike = cristianoLike + cristianoInfo[i].public_metrics.like_count
@@ -83,7 +83,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
     // collect bts info
-    let btsInfo = data[1][3].data;
+    let btsInfo = data[1].tweets[3].data;
     let btsLike = 0
     for(let i = 0 ; i < btsInfo.length; i++){
         btsLike = btsLike + btsInfo[i].public_metrics.like_count
@@ -105,7 +105,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
     // collect wendy info
-    let wendyInfo = data[1][4].data;
+    let wendyInfo = data[1].tweets[4].data;
     let wendyLike = 0
     for(let i = 0 ; i < wendyInfo.length; i++){
         wendyLike = wendyLike + wendyInfo[i].public_metrics.like_count
@@ -127,7 +127,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
     // collect shroud info
-    let shroudInfo = data[1][5].data;
+    let shroudInfo = data[1].tweets[5].data;
     let shroudLike = 0
     for(let i = 0 ; i < shroudInfo.length; i++){
         shroudLike = shroudLike + shroudInfo[i].public_metrics.like_count
@@ -149,7 +149,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
      // collect CDawgVA info
-     let CDawgVAInfo = data[1][6].data;
+     let CDawgVAInfo = data[1].tweets[6].data;
      let CDawgVALike = 0
      for(let i = 0 ; i < CDawgVAInfo.length; i++){
         CDawgVALike = CDawgVALike + CDawgVAInfo[i].public_metrics.like_count
@@ -171,7 +171,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
      }
 
     // collect charliedamelio info
-    let charliInfo = data[1][7].data;
+    let charliInfo = data[1].tweets[7].data;
     let charliLike = 0
     for(let i = 0 ; i < charliInfo.length; i++){
         charliLike = charliLike + charliInfo[i].public_metrics.like_count
@@ -193,7 +193,8 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
     // collect nfl info
-    let nflInfo = data[1][8].data;
+    
+    let nflInfo = data[1].tweets[8].data;
     let nflLike = 0
     for(let i = 0 ; i < nflInfo.length; i++){
         nflLike = nflLike + nflInfo[i].public_metrics.like_count
@@ -215,7 +216,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
     }
 
     // collect instagram info
-    let instagramInfo = data[1][9].data;
+    let instagramInfo = data[1].tweets[9].data;
     let instagramLike = 0
     for(let i = 0 ; i < instagramInfo.length; i++){
         instagramLike = instagramLike + instagramInfo[i].public_metrics.like_count
@@ -297,31 +298,7 @@ d3.json("tweet_1.json").then(function(tweetdata){
           
           Plotly.newPlot('scatter', scatterData, scatterLayout,{displaylogo: false});
         
-     // create bubble chart
-     let bubbleTrace = {
-        x : [ "Barack Obama", "Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
-        y : [obamaRetweet/100, wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
-        mode: 'markers',
-        marker:{
-            size: [obamaRetweet/100, wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
-            color: [ 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)',
-                    'rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)']
-        }
-    }
 
-    console.log("obama",obamaLike/100)
-
-    let bubbleLayout = {    
-        showlegend: true,
-        xaxis: {title:'Twitter user name'},
-        yaxis: {title:'Average Quote Count'},
-        height: 600,
-        width: 1200
-    };
-
-    let bubbleData = [bubbleTrace];
-
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
     //<!---------------------Comparison bar chart -------------------------------------->
 
@@ -343,8 +320,8 @@ d3.json("tweet_1.json").then(function(tweetdata){
     Plotly.newPlot("likebar2", trace, layout);
 
     let bar3 = {
-        x: [ "Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
-        y: [wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
+        x: ["Elon Musk","Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
+        y: [elonLike/elonInfo.length,obamaLike/100,wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
         type: 'bar'
     }
 
@@ -377,8 +354,8 @@ d3.json("tweet_1.json").then(function(tweetdata){
     Plotly.newPlot("relybar1", replytrace1, replylayout1 );
 
     let replybar2 = {
-        x: [ "Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
-        y: [obamaReply/100,wendyReply/100, shroudReply/100, CDawgVAReply/100, charliReply/100, nflReply/100, instagramReply/100],
+        x: ["Elon Musk","Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
+        y: [elonReply/elonInfo.length,obamaReply/100,wendyReply/100, shroudReply/100, CDawgVAReply/100, charliReply/100, nflReply/100, instagramReply/100],
         type: 'bar'
     }
 
@@ -410,8 +387,8 @@ d3.json("tweet_1.json").then(function(tweetdata){
     Plotly.newPlot("retweetbar1", retweettrace1, retweetlayout1 );
 
     let retweetbar2 = {
-        x: [ "Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
-        y: [obamaRetweet/100,wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
+        x: ["Elon Musk","Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
+        y: [elonRetweet/elonInfo.length,obamaRetweet/100,wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
         type: 'bar'
     }
 
@@ -443,8 +420,8 @@ d3.json("tweet_1.json").then(function(tweetdata){
     Plotly.newPlot("quotebar1", quotetrace1, quotelayout1);
 
     let quotebar2 = {
-        x: [ "Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
-        y: [obamaQuote/100,wendyQuote/100, shroudQuote/100, CDawgVAQuote/100, charliQuote/100, nflQuote/100, instagramQuote/100],
+        x: ["Elon Musk","Barack Obama","Wendys", "Shroud", "CDawgVA", "Charli Damelio", "NFL", "Instagram"],
+        y: [elonQuote/elonInfo.length,obamaQuote/100,wendyQuote/100, shroudQuote/100, CDawgVAQuote/100, charliQuote/100, nflQuote/100, instagramQuote/100],
         type: 'bar'
     }
 
@@ -462,35 +439,39 @@ d3.json("tweet_1.json").then(function(tweetdata){
 
      // function to update panel info
     function updateinfo(id){
-        let info = data[1][id].data
+        let info = data[1].tweets[id].data
 
         // extract info for each user
         let likeCount = 0
         for(let i = 0 ; i < info.length; i++){
             likeCount = likeCount + info[i].public_metrics.like_count
         }
+        likeCount = likeCount/info.length;
 
         let quoteCount = 0
         for(let i = 0 ; i < info.length; i++){
             quoteCount =  quoteCount + info[i].public_metrics.quote_count
         }
+        quoteCount = quoteCount/info.length
 
         let replyCount = 0
         for(let i = 0 ; i < info.length; i++){
             replyCount =  replyCount + info[i].public_metrics.reply_count
         }
+        replyCount = replyCount/info.length
 
         let retweetCount = 0
         for(let i = 0 ; i < info.length; i++){
             retweetCount =  retweetCount + info[i].public_metrics.retweet_count
         }
+        retweetCount = retweetCount/info.length
     
         console.log(info[1])
 
         //create barchart
         let barTrace = {
             x: ["Average Like Count","Average Quote Count","Average Reply Count","Average Retweet Count"],
-            y: [likeCount/100, quoteCount/100, replyCount/100, retweetCount/100],
+            y: [likeCount, quoteCount, replyCount, retweetCount],
             type: 'bar'
         }
 
@@ -506,10 +487,10 @@ d3.json("tweet_1.json").then(function(tweetdata){
         let sample_metadata = d3.select("#sample-metadata");
     
         sample_metadata.html("");
-        sample_metadata.append("li").text("Average Like Count: " + likeCount/100);
-        sample_metadata.append("li").text("Average Quote Count: " + quoteCount/100);
-        sample_metadata.append("li").text("Average Reply Count: " + replyCount/100);
-        sample_metadata.append("li").text("Average Retweet Count: " + retweetCount/100);
+        sample_metadata.append("li").text("Average Like Count: " + likeCount.toFixed(2));
+        sample_metadata.append("li").text("Average Quote Count: " + quoteCount.toFixed(2));
+        sample_metadata.append("li").text("Average Reply Count: " + replyCount.toFixed(2));
+        sample_metadata.append("li").text("Average Retweet Count: " + retweetCount.toFixed(2));
     }
 
     d3.selectAll("#selDataset").on("change", updateData);
@@ -519,10 +500,10 @@ d3.json("tweet_1.json").then(function(tweetdata){
         // Assign the value of the dropdown menu option to a variable
         let dataset = dropdownMenu.property("value");
         console.log("value", dataset);
-        console.log(Object.keys(Object.values(data[0])[1])[0]);
+        console.log(Object.keys(Object.values(names)[2])[0]);
 
-        for(let i =0; i< data[0].length; i++){
-            if(dataset === Object.keys(Object.values(data[0])[i])[0]){
+        for(let i =0; i< data[1].users.length; i++){
+            if(dataset === Object.keys(Object.values(data[1].users)[i])[0]){
                 updateinfo(i);
             }
         }
@@ -544,14 +525,14 @@ d3.json("../tweet.json").then(function(tweetdata){
         //console.log(Object.keys(values[i]));
 };
 
-let obamaInfo = data[1][1].data;
+   let obamaInfo = data[1][1].data;
 
-    console.log(obamaInfo);
     let likeCounts=[];
     for(let i = 0 ; i < obamaInfo.length; i++){
               likeCounts.push(obamaInfo[i].public_metrics.like_count) 
           };
-    console.log(likeCounts);
+
+
 
     let A=[];
     let B=[];
