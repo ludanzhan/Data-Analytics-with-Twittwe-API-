@@ -16,9 +16,9 @@ def home():
 	tweets = collection.find_one()
 	return render_template('index.html', tweets=tweets)
 
-@app.route('/scrape')
-def scrape():
-	get_tweets.scrape()
+@app.route('/request')
+def request():
+	Data_Collection.get_tweets()
 	return redirect('/', code = 302)
 
  
