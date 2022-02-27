@@ -1,7 +1,9 @@
-d3("/scrape").then(function(tweetdata){
+d3.json("tweet_1.json").then(function(tweetdata){
     const data = tweetdata;
     let names = data[0];
     let values = Object.values(names)
+
+    console.log(names);
     // grab the dropdown menu
     const selectBox = d3.select("#selDataset");
         
@@ -313,8 +315,8 @@ d3("/scrape").then(function(tweetdata){
         showlegend: true,
         xaxis: {title:'Twitter user name'},
         yaxis: {title:'Average Quote Count'},
-        height: 800,
-        width: 1400
+        height: 600,
+        width: 1200
     };
 
     let bubbleData = [bubbleTrace];
