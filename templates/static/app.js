@@ -1,4 +1,4 @@
-d3.json("../tweet.json").then(function(tweetdata){
+d3("/scrape").then(function(tweetdata){
     const data = tweetdata;
     let names = data[0];
     let values = Object.values(names)

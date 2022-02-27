@@ -9,20 +9,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
-<body style="background-color:steelblue">
+<body style="background-color:white">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js" integrity="sha512-gSf3NCgs6wWEdztl1e6vUqtRP884ONnCNzCpomdoQ0xXsk06lrxJsR7jX5yM/qAGkPGsps+4bLV5IEjhOZX+gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div id="fullPage">
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 jumbotron text-center" style="background-color:steelblue">
+          <div class="col-md-12 jumbotron text-center" style="background-color:white">
             <h1 style="font-size: 90px;">Twitter API Dashboard</h1>
           </div>
         </div>
       </div>
     </div>
     <!-- Other pages -->
-    <div class="section" style = "background-color: white;">
+    <div class="section" style = "background-color: steelblue;">
         <div class="slide"> 
           <div class="container">
             <div class="row">
@@ -35,7 +35,7 @@
                     <div id="sample-metadata" class="panel-body" ></div>
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6" style="background-color: #a6dcdc; border-style: solid; border-radius: 20px;">
                   <div id="bar"></div>
                 </div>
              </div>
@@ -46,11 +46,11 @@
       <div class="slide"> 
         <div class="row">
           <div class="col-md-12">
-            <h1 style="text-align: center;font-size: 50px;">Like Count Comparison</h1>
-            <div class="col-md-6">
+            <h1 style="text-align: center; font-size: 50px; margin-bottom: 100px;">Like Count Comparison</h1>
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #a8dca6; border-style: solid; border-radius: 20px;">
               <div id="likebar2"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #a8dca6; border-style: solid; border-radius: 20px;">
               <div id="likebar3"></div>
             </div>
           </div>
@@ -59,11 +59,11 @@
       <div class="slide"> 
         <div class="row">
           <div class="col-md-12">
-            <h1 style="text-align: center;font-size: 50px;">Reply Count Comparison</h1>
-            <div class="col-md-6">
+            <h1 style="text-align: center; font-size: 50px; margin-bottom: 100px;">Reply Count Comparison</h1>
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #a6dadc; border-style: solid; border-radius: 20px;">
               <div id="relybar1"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #a6dadc; border-style: solid; border-radius: 20px;">
               <div id="replybar2"></div>
             </div>
           </div> 
@@ -72,12 +72,12 @@
       <div class="slide"> 
         <div class="row">
           <div class="col-md-12">
-            <h1 style="text-align: center;font-size: 50px;">Retweet Count Comparison</h1>
+            <h1 style="text-align: center;font-size: 50px; margin-bottom: 100px;">Retweet Count Comparison</h1>
             <div class="col-md-6">
-              <div id="retweetbar1"></div>
+              <div id="retweetbar1" style = "margin-left: 100px; background-color: #dca6dc; border-style: solid;"></div>
             </div>
-            <div class="col-md-6">
-              <div id="retweetbar2"></div>
+            <div class="col-md-5">
+              <div id="retweetbar2" style = "margin-left: 50px; background-color: #dca6dc; border-style: solid;"></div>
             </div>
           </div> 
         </div>
@@ -85,11 +85,11 @@
       <div class="slide"> 
         <div class="row">
           <div class="col-md-12">
-            <h1 style="text-align: center;font-size: 50px;">Quote Count Comparison</h1>
-            <div class="col-md-6">
+            <h1 style="text-align: center;font-size: 50px; margin-bottom: 100px;">Quote Count Comparison</h1>
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #dca6a6; border-style: solid; border-radius: 20px;">
               <div id="quotebar1"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5" style = "margin-left: 100px; background-color: #dca6a6; border-style: solid; border-radius: 20px;">
               <div id="quotebar2"></div>
             </div>
           </div> 
@@ -98,17 +98,21 @@
       <div class="slide"> 
         <div class="row">
           <div class="col-md-12">
-            <div id="bubble"></div>
+            <h1 style="text-align: center; font-size: 50px; margin-bottom: 50px;">Average Quote Count Bubble Chart</h1>
+            <div style = "margin-left: 250px;">
+              <div id="bubble">
+              </div>
+            </div>
           </div>
       </div>
     </div>
   </div>
-  <div class="section" style = "background-color: white;">
+  <div class="section" style = "background-color: steelblue;">
     <div class="slide"> 
       <div class="container">
         <div class="row">
-          <h1 style="text-align: center;font-size: 50px;">Overalll Comparison</h1>
-            <div class="col-md-6">
+          <h1 style="text-align: center; font-size: 50px; margin-bottom: 50px;">Overall Comparison</h1>
+            <div class="col-md-12">
               <div id="scatter"></div>
             </div>
          </div>
