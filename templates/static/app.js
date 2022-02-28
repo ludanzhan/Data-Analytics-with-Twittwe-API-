@@ -1,4 +1,4 @@
-d3.json("../tweet.json").then(function(tweetdata){
+d3.json("tweet.json").then(function(tweetdata){
     const data = tweetdata;
     let names = data[1].users;
     let values = Object.values(names)
@@ -509,7 +509,7 @@ d3.json("../tweet.json").then(function(tweetdata){
 
         let layout = {
             width: 550,
-            height: 550
+            height: 350
         };
 
         let traceData = [barTrace];
@@ -545,7 +545,7 @@ d3.json("../tweet.json").then(function(tweetdata){
             showlegend: true,
             xaxis: {title:'Like Counts'},
             width: 550,
-            height: 550
+            height: 400
         };
           
           var scatterData = [traceRetweets, traceQuotes, traceReplys];
