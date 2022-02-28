@@ -1,9 +1,9 @@
-d3.json("tweet.json").then(function(tweetdata){
+d3.json("../tweet.json").then(function(tweetdata){
     const data = tweetdata;
     let names = data[1].users;
     let values = Object.values(names)
-
-    console.log(data[1].tweets[0].data)
+    console.log(data);
+    console.log(data[1].tweets[4].data)
     // grab the dropdown menu
     const selectBox = d3.select("#selDataset");
         
@@ -15,29 +15,46 @@ d3.json("tweet.json").then(function(tweetdata){
 
     // default chart
     updateinfo(0)
-   //<!---------------------Collecting count information -------------------------------------->
-    // collect elon mask info
+// //    <!---------------------Collecting count information -------------------------------------->
+//     collect elon mask info
     let elonInfo = data[1].tweets[0].data;
-    let elonLike = 0
+    console.log(elonInfo);
+
+    let elonLike =0;
+    let elonLikecounts=[];
+      
+      
     for(let i = 0 ; i < elonInfo.length; i++){
-        elonLike = elonLike + elonInfo[i].public_metrics.like_count
+        elonLike = elonLike + elonInfo[i].public_metrics.like_count;
+        elonLikecounts.push(elonInfo[i].public_metrics.like_count);
     }
+    console.log(elonLikecounts);
 
     let elonQuote = 0
+    let elonQuotecounts=[];
     for(let i = 0 ; i < elonInfo.length; i++){
-        elonQuote =  elonQuote + elonInfo[i].public_metrics.quote_count
+        elonQuote =  elonQuote + elonInfo[i].public_metrics.quote_count;
+        elonQuotecounts.push(elonInfo[i].public_metrics.quote_count);
     }
+    console.log(elonQuotecounts);
 
+    let elonReplycounts=[];
     let elonReply = 0
     for(let i = 0 ; i < elonInfo.length; i++){
-        elonReply =  elonReply+ elonInfo[i].public_metrics.reply_count
+        elonReply =  elonReply+ elonInfo[i].public_metrics.reply_count;
+        elonReplycounts.push(elonInfo[i].public_metrics.reply_count);
     }
 
+    console.log(elonReplycounts);
+
+    let elonRetweetcounts=[];
     let elonRetweet = 0
     for(let i = 0 ; i < elonInfo.length; i++){
-        elonRetweet =  elonRetweet + elonInfo[i].public_metrics.retweet_count
+        elonRetweet =  elonRetweet + elonInfo[i].public_metrics.retweet_count;
+        elonRetweetcounts.push(elonInfo[i].public_metrics.retweet_count);
     }
-    
+    console.log(elonRetweetcounts);
+
     // collect obama info
     let obamaInfo = data[1].tweets[1].data;
     let obamaLike = 0
@@ -237,7 +254,7 @@ d3.json("tweet.json").then(function(tweetdata){
         instagramRetweet =  instagramRetweet + nflInfo[i].public_metrics.retweet_count
     }
 
-    //<!---------------------Create Chart ----------------------------------------------->
+//     //<!---------------------Create Chart ----------------------------------------------->
 
      //create scatter plot
         var scatterTrace1 = {
@@ -296,13 +313,13 @@ d3.json("tweet.json").then(function(tweetdata){
           
         var scatterData = [scatterTrace1, scatterTrace2,scatterTrace3];
           
-          Plotly.newPlot('scatter', scatterData, scatterLayout,{displaylogo: false});
+          Plotly.newPlot('scatterall', scatterData, scatterLayout,{displaylogo: false});
         
 
 
-    //<!---------------------Comparison bar chart -------------------------------------->
+//     //<!---------------------Comparison bar chart -------------------------------------->
 
-    // create like count comparison bar chart
+//     // create like count comparison bar chart
     let bar = {
         x: [ "Barack Obama", "Cristiano", "BTS"],
         y: [obamaLike/100, cristianoLike/100, btsLike/100],
@@ -335,7 +352,7 @@ d3.json("tweet.json").then(function(tweetdata){
     let trace3 = [bar3];
     Plotly.newPlot("likebar3", trace3, layout3);
 
-    //--------create reply count comparison bar chart--------------------------------------------------------------------------
+//     //--------create reply count comparison bar chart--------------------------------------------------------------------------
 
     let replybar1 = {
         x: [ "Barack Obama", "Cristiano", "BTS"],
@@ -369,7 +386,7 @@ d3.json("tweet.json").then(function(tweetdata){
     let replytrace2 = [replybar2];
     Plotly.newPlot("replybar2", replytrace2, replylayout2);
    
-    //------------------create retweet count comparison bar chart----------------------------------------------------------------
+//     //------------------create retweet count comparison bar chart----------------------------------------------------------------
     let retweetbar1 = {
         x: [ "Barack Obama", "Cristiano", "BTS"],
         y: [obamaRetweet/100, cristianoRetweet/100, btsRetweet/100],
@@ -402,7 +419,7 @@ d3.json("tweet.json").then(function(tweetdata){
     let retweettrace2 = [retweetbar2 ];
     Plotly.newPlot("retweetbar2", retweettrace2, retweetlayout2);
 
-     //------------------create quote count comparison bar chart----------------------------------------------------------------
+//      //------------------create quote count comparison bar chart----------------------------------------------------------------
      let quotebar1 = {
         x: [ "Barack Obama", "Cristiano", "BTS"],
         y: [obamaQuote/100, cristianoQuote/100, btsQuote/100],
@@ -435,34 +452,49 @@ d3.json("tweet.json").then(function(tweetdata){
     let quotetrace2 = [quotebar2 ];
     Plotly.newPlot("quotebar2",  quotetrace2, quotelayout2);
 
-
-
+    console.log(data[1]);
+    console.log(data[1].tweets[0].data);
+   
      // function to update panel info
     function updateinfo(id){
-        let info = data[1].tweets[id].data
+        // console.log(data[1].tweets[0].data);
+        let info=data[1].tweets[id].data;
+        console.log(info);
 
         // extract info for each user
+        let arrayLikecounts=[];
         let likeCount = 0
         for(let i = 0 ; i < info.length; i++){
-            likeCount = likeCount + info[i].public_metrics.like_count
+            
+            likeCount = likeCount + info[i].public_metrics.like_count;
+            arrayLikecounts.push(info[i].public_metrics.like_count);
         }
         likeCount = likeCount/info.length;
+        
 
+
+        let arrayQuotecounts=[];
         let quoteCount = 0
         for(let i = 0 ; i < info.length; i++){
-            quoteCount =  quoteCount + info[i].public_metrics.quote_count
+            quoteCount =  quoteCount + info[i].public_metrics.quote_count;
+            arrayQuotecounts.push(info[i].public_metrics.quote_count);
         }
         quoteCount = quoteCount/info.length
 
+
         let replyCount = 0
+        let arrayReplycounts=[];
         for(let i = 0 ; i < info.length; i++){
-            replyCount =  replyCount + info[i].public_metrics.reply_count
+            replyCount =  replyCount + info[i].public_metrics.reply_count;
+            arrayReplycounts.push(info[i].public_metrics.reply_count);
         }
         replyCount = replyCount/info.length
 
         let retweetCount = 0
+        let arrayRetweetcounts=[];
         for(let i = 0 ; i < info.length; i++){
-            retweetCount =  retweetCount + info[i].public_metrics.retweet_count
+            retweetCount =  retweetCount + info[i].public_metrics.retweet_count;
+            arrayRetweetcounts.push(info[i].public_metrics.retweet_count);
         }
         retweetCount = retweetCount/info.length
     
@@ -483,7 +515,106 @@ d3.json("tweet.json").then(function(tweetdata){
         let traceData = [barTrace];
         Plotly.newPlot("bar", traceData, layout);
 
-        // update info panel
+        //create scatter plot for each account to look at corelation between likecounts and replycounts quotecount and retweet counts 
+
+        var traceRetweets = {
+            x:  arrayLikecounts,
+            y: arrayRetweetcounts,
+            mode: 'markers',
+            type: 'scatter',
+            name: 'retweet Counts',
+          };
+          
+          var traceQuotes = {
+            x:  arrayLikecounts,
+            y: arrayQuotecounts,
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Quote Counts',
+          };
+          
+          var traceReplys = {
+            x: arrayLikecounts,
+            y: arrayReplycounts,
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Reply Counts',
+          };
+
+          let scatterLayout = {
+            showlegend: true,
+            xaxis: {title:'Like Counts'},
+            width: 550,
+            height: 550
+        };
+          
+          var scatterData = [traceRetweets, traceQuotes, traceReplys];
+          
+          Plotly.newPlot('scatter', scatterData, scatterLayout);
+
+        //create pie chart for each account to look at the distribution of like accounts numbers
+
+        
+        let A=[];
+        let B=[];
+        let C=[];
+        let D=[];
+        let E=[];
+        let F=[];
+        let G=[];
+        let H=[];
+          
+          
+        for(let i = 0 ; i < arrayLikecounts.length; i++){
+          
+                  let counts=arrayLikecounts[i];
+                  if (counts<5000){
+                      A++;
+                    } else if (counts<10000){
+                      B++;
+                    } else if (counts<20000){
+                      C++;
+                    } else if (counts<40000){
+                        D++;
+                      }else if (counts<80000){
+                        E++;
+                      }else if (counts<160000){
+                        F++;
+                      }else if (counts<320000){
+                        G++;
+                      }else if (counts<640000){
+                        H++;
+                      }
+
+                  if (counts>10000){B++};
+                  if (counts>20000){C++};
+                  if (counts>40000){D++};
+                  if (counts>80000){E++};
+                  if (counts>160000){F++}
+              };
+          
+              console.log(A);
+              console.log(B);
+              console.log(C);
+              console.log(D);
+              console.log(E);
+              console.log(F);
+          
+                
+            var pieData = [{
+                values: [A,B,C,D,E,F,G,H],
+                labels: ['<5k', '<10K', '<20K','<40K','<80k','<160K','<320K','<640K'],
+                type: 'pie'
+              }];
+              
+              var pieLayout = {
+                height: 750,
+                width: 1200
+              };
+              
+              Plotly.newPlot('pie', pieData, pieLayout);
+
+       // update info panel
         let sample_metadata = d3.select("#sample-metadata");
     
         sample_metadata.html("");
@@ -510,86 +641,24 @@ d3.json("tweet.json").then(function(tweetdata){
     }
 });
 
-d3.json("../tweet.json").then(function(tweetdata){
-    const data = tweetdata;
-    let names = data[0];
-    let tweets=data[1];
-    console.log(tweets);
-    let values = Object.values(names);
-    // grab the dropdown menu
-    const selectBox2 = d3.select("#selDataset2");
+// d3.json("../tweet.json").then(function(tweetdata){
+//     const data = tweetdata;
+//     let names = data[0];
+//     let tweets=data[1];
+//     console.log(tweets);
+//     let values = Object.values(names);
+//     // grab the dropdown menu
+//     const selectBox2 = d3.select("#selDataset2");
         
-    // adding ids to the dropdown menu
-    for(let i =0; i< names.length; i++){
-        selectBox2.append("option").text(Object.keys(values[i]));
-        //console.log(Object.keys(values[i]));
-};
-
-   let obamaInfo = data[1][1].data;
-
-    let likeCounts=[];
-    for(let i = 0 ; i < obamaInfo.length; i++){
-              likeCounts.push(obamaInfo[i].public_metrics.like_count) 
-          };
-
-
-
-    let A=[];
-    let B=[];
-    let C=[];
-    let D=[];
-    let E=[];
-    let F=[];
-
-
-    for(let i = 0 ; i < likeCounts.length; i++){
-
-        let counts=likeCounts[i];
-        if (counts>5000){A++};
-        if (counts>10000){B++};
-        if (counts>20000){C++};
-        if (counts>40000){D++};
-        if (counts>80000){E++};
-        if (counts>160000){F++}
-    };
-
-    console.log(A);
-    console.log(B);
-    console.log(C);
-    console.log(D);
-    console.log(E);
-    console.log(F);
-
-      
-  var pieData = [{
-      values: [A,B,C,D,E,F],
-      labels: ['>5k', '>10K', '>20K','>40K','>80k','>160K'],
-      type: 'pie'
-    }];
-    
-    var pieLayout = {
-      height: 750,
-      width: 1200
-    };
-    
-    Plotly.newPlot('pie', pieData, pieLayout);
-
-
-})
-
-// let elone = data[1][0].data;
-// let likecountsArray=[];
-
-// for(let j = 0 ; ij< 10; j++){
-
-//    likecountsArray.push (data[1][j].data);
-//    let likeCounts=[];
-//    for(let i = 0 ; i <100; i++){
-//              likeCounts.push([i].public_metrics.like_count) 
-//          };
-//    console.log(likeCounts);
-
-
-
-
+//     // adding ids to the dropdown menu
+//     for(let i =0; i< names.length; i++){
+//         selectBox2.append("option").text(Object.keys(values[i]));
+//         //console.log(Object.keys(values[i]));
 // };
+
+
+
+
+
+
+// // };
