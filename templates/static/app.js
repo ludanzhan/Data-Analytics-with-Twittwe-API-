@@ -5,7 +5,7 @@ d3.json("tweet.json").then(function(tweetdata){
     console.log(data);
     console.log(data[1].tweets[4].data)
     // grab the dropdown menu
-    const selectBox = d3.select("#selDataset");
+    const selectBox = d3.selectAll("#selDataset");
         
     // adding ids to the dropdown menu
     for(let i =0; i< names.length; i++){
@@ -258,13 +258,13 @@ d3.json("tweet.json").then(function(tweetdata){
 
      //create scatter plot
         var scatterTrace1 = {
-            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
-            y: [  obamaRetweet/100, wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100],
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100,elonLike/100],
+            y: [  obamaRetweet/100, wendyRetweet/100, shroudRetweet/100, CDawgVARetweet/100, charliRetweet/100, nflRetweet/100, instagramRetweet/100,elonRetweet/100],
             mode: 'markers+text',
             marker: {
                 size: 20
               },
-            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram','Elon Musk'],
             textposition: 'top center',
             name: 'Retweet Counts',
             type: 'scatter'
@@ -278,12 +278,12 @@ d3.json("tweet.json").then(function(tweetdata){
             width: 1200
         };
           var scatterTrace2 = {
-            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
-            y: [  obamaQuote/100, wendyQuote/100, shroudQuote/100, CDawgVAQuote/100, charliQuote/100, nflQuote/100, instagramQuote/100],
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100,elonLike/100],
+            y: [  obamaQuote/100, wendyQuote/100, shroudQuote/100, CDawgVAQuote/100, charliQuote/100, nflQuote/100, instagramQuote/100,elonQuote/100],
             marker: {
                 size: 20
               },
-            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram','Elon Musk'],
             textposition: 'top center',
             name: 'Quote Counts',
             
@@ -293,12 +293,12 @@ d3.json("tweet.json").then(function(tweetdata){
         
 
           var scatterTrace3 = {
-            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100],
-            y: [  obamaReply/100, wendyReply/100, shroudReply/100, CDawgVAReply/100, charliReply/100, nflReply/100, instagramReply/100],
+            x: [  obamaLike/100, wendyLike/100, shroudLike/100, CDawgVALike/100, charliLike/100, nflLike/100, instagramLike/100,elonLike/100],
+            y: [  obamaReply/100, wendyReply/100, shroudReply/100, CDawgVAReply/100, charliReply/100, nflReply/100, instagramReply/100,elonReply/100],
             marker: {
                 size: 20
               },
-            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram'],
+            text: ['Barack Obama','wendy', 'shroud', 'CDawgVA','Charli Damelio','NFL','instagram','Elon Musk'],
             textposition: 'top center',
             name: 'Reply Counts',
             mode: 'markers+text',           
@@ -508,7 +508,7 @@ d3.json("tweet.json").then(function(tweetdata){
         }
 
         let layout = {
-            width: 600,
+            width: 580,
             height: 420
         };
 
@@ -523,6 +523,7 @@ d3.json("tweet.json").then(function(tweetdata){
             mode: 'markers',
             type: 'scatter',
             name: 'retweet Counts',
+            
           };
           
           var traceQuotes = {
@@ -604,12 +605,13 @@ d3.json("tweet.json").then(function(tweetdata){
             var pieData = [{
                 values: [A,B,C,D,E,F,G,H],
                 labels: ['<5k', '<10K', '<20K','<40K','<80k','<160K','<320K','<640K'],
-                type: 'pie'
+                type: 'pie',
+                title:'Distribution of like counts'
               }];
               
               var pieLayout = {
-                height: 750,
-                width: 1200
+                width: 580,
+                height: 420
               };
               
               Plotly.newPlot('pie', pieData, pieLayout);
@@ -627,7 +629,7 @@ d3.json("tweet.json").then(function(tweetdata){
     d3.selectAll("#selDataset").on("change", updateData);
 
     function updateData(){
-        let dropdownMenu = d3.select("#selDataset");
+        let dropdownMenu = d3.selectAll("#selDataset");
         // Assign the value of the dropdown menu option to a variable
         let dataset = dropdownMenu.property("value");
         console.log("value", dataset);
