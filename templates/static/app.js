@@ -508,8 +508,8 @@ d3.json("tweet.json").then(function(tweetdata){
         }
 
         let layout = {
-            width: 550,
-            height: 350
+            width: 600,
+            height: 420
         };
 
         let traceData = [barTrace];
@@ -544,8 +544,8 @@ d3.json("tweet.json").then(function(tweetdata){
           let scatterLayout = {
             showlegend: true,
             xaxis: {title:'Like Counts'},
-            width: 550,
-            height: 400
+            width: 600,
+            height: 420
         };
           
           var scatterData = [traceRetweets, traceQuotes, traceReplys];
